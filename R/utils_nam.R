@@ -138,9 +138,9 @@ diffuse_step <- function(data, s) {
 #     return(snorm)
 # }
 .nam <- function(data, nsteps=NULL, maxnsteps=15L) {
-    f <- as.formula(as.character(glue('~0+{data$samplem_key}')))    
+    f <- as.formula(as.character(glue::glue('~0+{data$samplem_key}')))    
     s <- model.matrix(f, data$obs)
-    colnames(s) <- gsub(as.character(glue('^{data$samplem_key}(.*)')), '\\1', colnames(s))
+    colnames(s) <- gsub(as.character(glue::glue('^{data$samplem_key}(.*)')), '\\1', colnames(s))
     rownames(s) <- data$obs[[data$obs_key]]    
     s <- s[, data$samplem[[data$samplem_key]]] ## Necessary? 
     
